@@ -116,6 +116,7 @@ function showQuestion(question) {
     answerButtons.forEach((button, index) => {
         button.innerText = question.answers[index];
         button.classList.remove('correct', 'incorrect');
+        button.addEventListener('click', () => selectAnswer(index));
     });
 
     document.getElementById('next-btn').style.display = 'none';
