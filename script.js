@@ -105,6 +105,11 @@ let currentQuestionIndex = 0;
 let score = 0;
 
 function startQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    document.getElementById('confetti').style.display = 'none';
+    document.getElementById('clapping').style.display = 'none';
+    document.getElementById('score').innerText = `Pontuação: ${score}/${questions.length}`;
     showQuestion(questions[currentQuestionIndex]);
 }
 
@@ -116,6 +121,7 @@ function showQuestion(question) {
     answerButtons.forEach((button, index) => {
         button.innerText = question.answers[index];
         button.classList.remove('correct', 'incorrect');
+        button.removeEventListener('click', handleAnswerClick);
         button.addEventListener('click', () => selectAnswer(index));
     });
 
@@ -138,9 +144,23 @@ function selectAnswer(index) {
     document.getElementById('score').innerText = `Pontuação: ${score}/${questions.length}`;
 }
 
+function handleAnswerClick(e) {
+    const selectedButton = e.target;
+    const correct = selectedButton.dataset.correct;
+    setStatusClass(document.body, correct);
+    Array.from(answerButtons).forEach(button => {
+        setStatusClass(button, button.dataset.correct);
+    });
+    if (questions.length > currentQuestionIndex + 1) {
+        nextButton.classList.remove('hide');
+    } else {
+        startButton.innerText = 'Restart';
+        startButton.classList.remove('hide');
+    }
+}
+
 function nextQuestion() {
     currentQuestionIndex++;
-
     if (currentQuestionIndex < questions.length) {
         showQuestion(questions[currentQuestionIndex]);
     } else {
@@ -174,5 +194,7 @@ function restartQuiz() {
     document.getElementById('clapping').style.display = 'none';
     startQuiz();
 }
+
+document.getElementById('next-btn').addEventListener('click', nextQuestion);
 
 startQuiz();
