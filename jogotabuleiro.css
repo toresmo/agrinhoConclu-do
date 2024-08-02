@@ -1,110 +1,79 @@
-/* Estilo global */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-/* Estilo do cabeçalho */
 header {
     background-color: #4CAF50;
     color: white;
-    padding: 20px 0;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2em;
-}
-
-header nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-header nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-header nav ul li a:hover {
-    text-decoration: underline;
-}
-
-/* Estilo do rodapé */
-footer {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
     width: 100%;
-    bottom: 0;
+    padding: 10px 0;
+    text-align: center;
 }
 
-footer p {
-    margin: 0;
-}
-
-/* Estilo do conteúdo principal */
 main {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Estilo do quiz */
-#quiz-container {
-    background: #fff;
-    border: 1px solid #ddd;
+    background: white;
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     max-width: 600px;
-    margin: 20px auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    text-align: center;
 }
 
 #question-container {
     margin-bottom: 20px;
 }
 
-.btn-container {
-    display: flex;
-    flex-direction: column;
+#question {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
 .btn {
-    background: #4CAF50;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px;
-    margin: 5px 0;
     border-radius: 5px;
-    cursor: pointer;
+    padding: 10px;
     font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .btn:hover {
-    background: #45a049;
+    background-color: #45a049;
+}
+
+.correct {
+    background-color: #4CAF50;
+}
+
+.incorrect {
+    background-color: #f44336;
 }
 
 #next-btn {
+    margin-top: 20px;
     display: none;
 }
 
 #score {
-    text-align: center;
     font-size: 1.2em;
-    color: #333;
+    margin-top: 20px;
 }
 
 /* Confetti */
