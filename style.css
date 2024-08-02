@@ -34,9 +34,6 @@ nav ul li a {
 main {
     padding: 2rem;
     margin: 1rem 0;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 section {
@@ -47,23 +44,31 @@ section h2 {
     color: #4CAF50;
 }
 
-section img {
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+}
+
+.card h3 {
+    color: #333;
+}
+
+.card img {
     max-width: 100%;
     height: auto;
     display: block;
     margin-top: 1rem;
-}
-
-.oportunidades-container {
-    display: flex;
-    justify-content: space-around;
-}
-
-.oportunidade {
-    background-color: #e0f7fa;
-    padding: 1rem;
-    border-radius: 5px;
-    width: 45%;
 }
 
 footer {
@@ -71,6 +76,7 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem 0;
+    position: fixed;
     width: 100%;
     bottom: 0;
 }
