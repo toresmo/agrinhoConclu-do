@@ -77,7 +77,7 @@ main {
 }
 
 /* Confetti */
-#confetti {
+#confeti {
     position: fixed;
     top: 0;
     left: 0;
@@ -101,4 +101,3 @@ main {
     height: 300px;
     display: none;
 }
-
