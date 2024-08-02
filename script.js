@@ -148,16 +148,29 @@ function nextQuestion() {
 }
 
 function showResults() {
-    document.getElementById('quiz-container').innerHTML = `
+    const quizContainer = document.getElementById('quiz-container');
+    quizContainer.innerHTML = `
         <h2>Quiz Concluído!</h2>
         <p>Sua pontuação final é ${score} de ${questions.length}</p>
         <button class="btn" onclick="restartQuiz()">Reiniciar Quiz</button>
     `;
+
+    if (score >= 9) {
+        document.getElementById('confetti').style.display = 'block';
+    } else if (score >= 7) {
+        document.getElementById('clapping').style.display = 'block';
+    } else {
+        const message = document.createElement('p');
+        message.innerText = "Pode melhorar!";
+        quizContainer.appendChild(message);
+    }
 }
 
 function restartQuiz() {
     currentQuestionIndex = 0;
     score = 0;
+    document.getElementById('confetti').style.display = 'none';
+    document.getElementById('clapping').style.display = 'none';
     startQuiz();
 }
 
