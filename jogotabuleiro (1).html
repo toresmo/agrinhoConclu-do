@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="jogotabuleiro.css">
+    <title>Processos dos Alimentos</title>
+</head>
+<body>
+    <header>
+        <h1>Do Campo à Mesa</h1>
+        <nav>
+            <ul>
+                <li><a href="indexfelipe.html">Principal</a></li>
+                <li><a href="jogotabuleiro.html">Quizz</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Seções anteriores -->
+        <section id="quiz">
+            <h2>Quiz: Processos dos Alimentos</h2>
+            <div id="quiz-container">
+                <div id="question-container">
+                    <p id="question"></p>
+                    <div id="answer-buttons" class="btn-container">
+                        <button class="btn" onclick="selectAnswer(0)"></button>
+                        <button class="btn" onclick="selectAnswer(1)"></button>
+                        <button class="btn" onclick="selectAnswer(2)"></button>
+                        <button class="btn" onclick="selectAnswer(3)"></button>
+                    </div>
+                </div>
+                <button id="next-btn" class="btn" onclick="nextQuestion()">Próxima Pergunta</button>
+            </div>
+            <p id="score"></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Do Campo à Mesa. Todos os direitos reservados.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
