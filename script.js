@@ -198,3 +198,4 @@ function restartQuiz() {
 document.getElementById('next-btn').addEventListener('click', nextQuestion);
 
 startQuiz();
+
