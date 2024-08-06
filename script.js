@@ -114,6 +114,7 @@ function startQuiz() {
 }
 
 function showQuestion(question) {
+    console.log("Mostrando pergunta:", question.question);
     const questionElement = document.getElementById('question');
     const answerButtons = document.querySelectorAll('.btn');
     questionElement.innerText = question.question;
@@ -146,7 +147,7 @@ function selectAnswer(index) {
 }
 
 function nextQuestion() {
-    console.log("Current Question Index:", currentQuestionIndex);
+    console.log("Índice da pergunta atual:", currentQuestionIndex);
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         showQuestion(questions[currentQuestionIndex]);
@@ -182,12 +183,3 @@ document.getElementById('next-btn').addEventListener('click', nextQuestion);
 
 startQuiz();
 
-function nextQuestion() {
-    console.log("Índice da pergunta atual:", currentQuestionIndex);
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-        showQuestion(questions[currentQuestionIndex]);
-    } else {
-        showResults();
-    }
-}
