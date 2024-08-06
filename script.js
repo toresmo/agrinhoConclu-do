@@ -146,7 +146,7 @@ function selectAnswer(index) {
 }
 
 function nextQuestion() {
-    console.log("Índice da pergunta atual:", currentQuestionIndex);
+    console.log("Current Question Index:", currentQuestionIndex);
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         showQuestion(questions[currentQuestionIndex]);
@@ -181,3 +181,13 @@ function restartQuiz() {
 document.getElementById('next-btn').addEventListener('click', nextQuestion);
 
 startQuiz();
+
+function nextQuestion() {
+    console.log("Índice da pergunta atual:", currentQuestionIndex);
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestion(questions[currentQuestionIndex]);
+    } else {
+        showResults();
+    }
+}
