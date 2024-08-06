@@ -101,6 +101,7 @@ const questions = [
     }
 ];
 
+
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -115,8 +116,9 @@ function startQuiz() {
 
 function showQuestion(question) {
     console.log("Exibindo pergunta:", question); // Adicionado para depuração
+
     const questionElement = document.getElementById('question');
-    const answerButtons = document.querySelectorAll('.btn');
+    const answerButtons = document.querySelectorAll('#answer-buttons .btn');
 
     if (!questionElement) {
         console.error("Elemento 'question' não encontrado.");
@@ -141,7 +143,7 @@ function showQuestion(question) {
 
 function selectAnswer(index) {
     const question = questions[currentQuestionIndex];
-    const answerButtons = document.querySelectorAll('.btn');
+    const answerButtons = document.querySelectorAll('#answer-buttons .btn');
 
     if (!question) {
         console.error("Pergunta atual não encontrada.");
