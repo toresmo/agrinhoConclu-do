@@ -100,6 +100,7 @@ const questions = [
         correct: 0
     }
 ];
+
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -145,7 +146,7 @@ function selectAnswer(index) {
 }
 
 function nextQuestion() {
-    console.log("Current Question Index:", currentQuestionIndex);
+    console.log("Índice da pergunta atual:", currentQuestionIndex);
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         showQuestion(questions[currentQuestionIndex]);
@@ -153,7 +154,6 @@ function nextQuestion() {
         showResults();
     }
 }
-
 
 function showResults() {
     const quizContainer = document.getElementById('quiz-container');
