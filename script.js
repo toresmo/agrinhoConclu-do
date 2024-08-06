@@ -100,6 +100,7 @@ const questions = [
         correct: 0
     }
 ];
+
 let currentQuestionIndex = 0;
 let score = 0;
 
