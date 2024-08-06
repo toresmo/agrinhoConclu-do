@@ -107,8 +107,6 @@ let score = 0;
 function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
-    document.getElementById('confetti').style.display = 'none';
-    document.getElementById('clapping').style.display = 'none';
     document.getElementById('score').innerText = `Pontuação: ${score}/${questions.length}`;
     showQuestion(questions[currentQuestionIndex]);
 }
@@ -140,13 +138,11 @@ function selectAnswer(index) {
     }
 
     answerButtons.forEach(button => button.disabled = true);
-
     document.getElementById('next-btn').style.display = 'block';
     document.getElementById('score').innerText = `Pontuação: ${score}/${questions.length}`;
 }
 
 function nextQuestion() {
-    console.log("Índice atual:", currentQuestionIndex);
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         showQuestion(questions[currentQuestionIndex]);
@@ -162,16 +158,6 @@ function showResults() {
         <p>Sua pontuação final é ${score} de ${questions.length}</p>
         <button class="btn" onclick="restartQuiz()">Reiniciar Quiz</button>
     `;
-
-    if (score >= 9) {
-        document.getElementById('confetti').style.display = 'block';
-    } else if (score >= 7) {
-        document.getElementById('clapping').style.display = 'block';
-    } else {
-        const message = document.createElement('p');
-        message.innerText = "Pode melhorar!";
-        quizContainer.appendChild(message);
-    }
 }
 
 function restartQuiz() {
