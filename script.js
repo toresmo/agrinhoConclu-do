@@ -1,5 +1,4 @@
 
-Copiar código
 const questions = [
     {
         question: "Qual é uma das principais vantagens de viver no campo?",
