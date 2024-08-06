@@ -114,20 +114,8 @@ function startQuiz() {
 }
 
 function showQuestion(question) {
-    console.log("Exibindo pergunta:", question); // Adicionado para depuração
-
     const questionElement = document.getElementById('question');
     const answerButtons = document.querySelectorAll('#answer-buttons .btn');
-
-    if (!questionElement) {
-        console.error("Elemento 'question' não encontrado.");
-        return;
-    }
-
-    if (answerButtons.length < 4) {
-        console.error("Botões de resposta não encontrados ou insuficientes.");
-        return;
-    }
 
     questionElement.innerText = question.question;
 
@@ -144,11 +132,6 @@ function selectAnswer(index) {
     const question = questions[currentQuestionIndex];
     const answerButtons = document.querySelectorAll('#answer-buttons .btn');
 
-    if (!question) {
-        console.error("Pergunta atual não encontrada.");
-        return;
-    }
-
     if (index === question.correct) {
         score++;
         answerButtons[index].classList.add('correct');
@@ -164,7 +147,6 @@ function selectAnswer(index) {
 }
 
 function nextQuestion() {
-    console.log("Próxima pergunta, índice atual:", currentQuestionIndex); // Adicionado para depuração
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         showQuestion(questions[currentQuestionIndex]);
@@ -175,11 +157,6 @@ function nextQuestion() {
 
 function showResults() {
     const quizContainer = document.getElementById('quiz-container');
-    if (!quizContainer) {
-        console.error("Elemento 'quiz-container' não encontrado.");
-        return;
-    }
-
     quizContainer.innerHTML = `
         <h2>Quiz Concluído!</h2>
         <p>Sua pontuação final é ${score} de ${questions.length}</p>
@@ -198,14 +175,11 @@ function showResults() {
 }
 
 function restartQuiz() {
-    // Redefine os valores iniciais e reinicia o quiz
     startQuiz();
 }
 
-// Configura o clique no botão "Próxima Pergunta"
 document.getElementById('next-btn').addEventListener('click', nextQuestion);
 
-// Inicializa o quiz quando a página carregar
 window.onload = () => {
     startQuiz();
 };
