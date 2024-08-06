@@ -140,6 +140,11 @@ function selectAnswer(index) {
         answerButtons[question.correct].classList.add('correct');
     }
 
+    // Impedir pontuação além do total de perguntas
+    if (score > questions.length) {
+        score = questions.length;
+    }
+
     document.getElementById('next-btn').style.display = 'block';
     document.getElementById('score').innerText = `Pontuação: ${score}/${questions.length}`;
 }
@@ -198,4 +203,3 @@ function restartQuiz() {
 document.getElementById('next-btn').addEventListener('click', nextQuestion);
 
 startQuiz();
-
