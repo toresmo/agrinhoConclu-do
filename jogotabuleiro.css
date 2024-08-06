@@ -34,14 +34,15 @@ nav ul li a {
     align-items: center;
 }
 
-nav ul li a i {
+nav ul li a img.nav-icon {
+    width: 20px; /* Ajuste o tamanho do ícone */
+    height: auto;
     margin-right: 5px; /* Espaço entre o ícone e o texto */
 }
 
 nav ul li a:hover {
     text-decoration: underline;
 }
-
 main {
     background: white;
     border-radius: 5px;
