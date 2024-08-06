@@ -100,8 +100,6 @@ const questions = [
         correct: 0
     }
 ];
-
-
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -199,10 +197,7 @@ function showResults() {
 }
 
 function restartQuiz() {
-    currentQuestionIndex = 0;
-    score = 0;
-    document.getElementById('confetti').style.display = 'none';
-    document.getElementById('clapping').style.display = 'none';
+    // Redefine os valores iniciais e reinicia o quiz
     startQuiz();
 }
 
