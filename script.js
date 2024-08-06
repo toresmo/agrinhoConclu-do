@@ -100,7 +100,6 @@ const questions = [
         correct: 0
     }
 ];
-
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -115,12 +114,11 @@ function startQuiz() {
 
 function showQuestion(question) {
     const questionElement = document.getElementById('question');
-    const answerButtons = document.querySelectorAll('#answer-buttons .btn');
-
+    const answerButtons = document.querySelectorAll('.btn');
     questionElement.innerText = question.question;
 
     answerButtons.forEach((button, index) => {
-        button.innerText = question.answers[index] || "Resposta não disponível";
+        button.innerText = question.answers[index];
         button.classList.remove('correct', 'incorrect');
         button.disabled = false;
     });
@@ -130,7 +128,7 @@ function showQuestion(question) {
 
 function selectAnswer(index) {
     const question = questions[currentQuestionIndex];
-    const answerButtons = document.querySelectorAll('#answer-buttons .btn');
+    const answerButtons = document.querySelectorAll('.btn');
 
     if (index === question.correct) {
         score++;
@@ -155,6 +153,7 @@ function nextQuestion() {
         showResults();
     }
 }
+
 
 function showResults() {
     const quizContainer = document.getElementById('quiz-container');
@@ -181,6 +180,4 @@ function restartQuiz() {
 
 document.getElementById('next-btn').addEventListener('click', nextQuestion);
 
-window.onload = () => {
-    startQuiz();
-};
+startQuiz();
