@@ -114,7 +114,6 @@ function startQuiz() {
 }
 
 function showQuestion(question) {
-    console.log("Mostrando pergunta:", question.question);
     const questionElement = document.getElementById('question');
     const answerButtons = document.querySelectorAll('.btn');
     questionElement.innerText = question.question;
@@ -147,7 +146,7 @@ function selectAnswer(index) {
 }
 
 function nextQuestion() {
-    console.log("Índice da pergunta atual:", currentQuestionIndex);
+    console.log("Índice atual:", currentQuestionIndex);
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         showQuestion(questions[currentQuestionIndex]);
