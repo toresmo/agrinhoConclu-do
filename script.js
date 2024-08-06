@@ -100,6 +100,7 @@ const questions = [
         correct: 0
     }
 ];
+
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -123,14 +124,14 @@ function showQuestion(question) {
     }
 
     if (answerButtons.length < 4) {
-        console.error("Botões de resposta não encontrados.");
+        console.error("Botões de resposta não encontrados ou insuficientes.");
         return;
     }
 
     questionElement.innerText = question.question;
 
     answerButtons.forEach((button, index) => {
-        button.innerText = question.answers[index];
+        button.innerText = question.answers[index] || "Resposta não disponível";
         button.classList.remove('correct', 'incorrect');
         button.disabled = false;
     });
