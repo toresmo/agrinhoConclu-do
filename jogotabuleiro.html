@@ -14,17 +14,18 @@
         <div id="question-container">
             <div id="question">Pergunta</div>
             <div id="answer-buttons" class="btn-grid">
-                <button class="btn" onclick="selectAnswer(0)"></button>
-                <button class="btn" onclick="selectAnswer(1)"></button>
-                <button class="btn" onclick="selectAnswer(2)"></button>
-                <button class="btn" onclick="selectAnswer(3)"></button>
+                <button class="btn" onclick="selectAnswer(0)">Resposta 1</button>
+                <button class="btn" onclick="selectAnswer(1)">Resposta 2</button>
+                <button class="btn" onclick="selectAnswer(2)">Resposta 3</button>
+                <button class="btn" onclick="selectAnswer(3)">Resposta 4</button>
             </div>
         </div>
-        <button id="next-btn" class="btn">Próxima</button>
+        <button id="next-btn" class="btn" onclick="nextQuestion()">Próxima</button>
         <div id="score">Pontuação: 0/10</div>
     </main>
-    <div id="confetti"></div>
-    <div id="clapping"></div>
+    <div id="confetti" style="display: none;">Confetti</div>
+    <div id="clapping" style="display: none;">Clapping</div>
     <script src="script.js"></script>
 </body>
 </html>
+
