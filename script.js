@@ -145,6 +145,7 @@ function showQuestion(question) {
 function selectAnswer(index) {
     const question = questions[currentQuestionIndex];
     const answerButtons = document.querySelectorAll('.btn');
+    
     if (index === question.correct) {
         score++;
         answerButtons[index].classList.add('correct');
@@ -163,9 +164,33 @@ function showResults() {
     quizContainer.innerHTML = `
         <h2>Quiz Concluído!</h2>
         <p>Sua pontuação final é ${score} de ${questions.length}</p>
-        <button class="btn" onclick="startQuiz()">Reiniciar Quiz</button>
+        <button class="btn" onclick="restartQuiz()">Reiniciar Quiz</button>
     `;
     triggerConfettiAndPalms();
+}
+
+function restartQuiz() {
+    document.getElementById('quiz-container').innerHTML = `
+        <div id="question-container">
+            <div id="question">Pergunta</div>
+            <div id="answer-buttons" class="btn-grid"></div>
+        </div>
+        <button id="next-btn" class="btn">Próxima</button>
+        <div id="score">Pontuação: 0/10</div>
+    `;
+    document.addEventListener('DOMContentLoaded', () => {
+        const nextButton = document.getElementById('next-btn');
+        nextButton.addEventListener('click', () => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion(questions[currentQuestionIndex]);
+            } else {
+                showResults();
+            }
+        });
+
+        startQuiz();
+    });
 }
 
 function triggerConfettiAndPalms() {
