@@ -121,8 +121,7 @@ function showQuestion(question) {
     answerButtons.forEach((button, index) => {
         button.innerText = question.answers[index];
         button.classList.remove('correct', 'incorrect');
-        button.removeEventListener('click', handleAnswerClick);
-        button.addEventListener('click', () => selectAnswer(index));
+        button.disabled = false;
     });
 
     document.getElementById('next-btn').style.display = 'none';
@@ -140,28 +139,10 @@ function selectAnswer(index) {
         answerButtons[question.correct].classList.add('correct');
     }
 
-    // Impedir pontuação além do total de perguntas
-    if (score > questions.length) {
-        score = questions.length;
-    }
+    answerButtons.forEach(button => button.disabled = true);
 
     document.getElementById('next-btn').style.display = 'block';
     document.getElementById('score').innerText = `Pontuação: ${score}/${questions.length}`;
-}
-
-function handleAnswerClick(e) {
-    const selectedButton = e.target;
-    const correct = selectedButton.dataset.correct;
-    setStatusClass(document.body, correct);
-    Array.from(answerButtons).forEach(button => {
-        setStatusClass(button, button.dataset.correct);
-    });
-    if (questions.length > currentQuestionIndex + 1) {
-        nextButton.classList.remove('hide');
-    } else {
-        startButton.innerText = 'Restart';
-        startButton.classList.remove('hide');
-    }
 }
 
 function nextQuestion() {
