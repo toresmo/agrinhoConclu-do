@@ -44,7 +44,7 @@ main {
 }
 
 .btn {
-    background-color: #4CAF50;
+    background-color: #db920a;
     color: white;
     border: none;
     border-radius: 5px;
@@ -55,7 +55,7 @@ main {
 }
 
 .btn:hover {
-    background-color: #df842f;
+    background-color: #75df2f;
 }
 
 .correct {
