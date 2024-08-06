@@ -100,7 +100,6 @@ const questions = [
         correct: 0
     }
 ];
-
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -158,10 +157,33 @@ function showResults() {
         <p>Sua pontuação final é ${score} de ${questions.length}</p>
         <button class="btn" onclick="restartQuiz()">Reiniciar Quiz</button>
     `;
+    triggerConfettiAndPalms();
 }
 
 function restartQuiz() {
     startQuiz();
+}
+
+function triggerConfettiAndPalms() {
+    // Trigger confetti
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+
+    // Trigger palms
+    for (let i = 0; i < 10; i++) {
+        const palm = document.createElement('i');
+        palm.className = 'fas fa-hands-clapping palma';
+        palm.style.left = Math.random() * 100 + 'vw';
+        palm.style.animationDelay = Math.random() * 2 + 's';
+        document.body.appendChild(palm);
+
+        palm.addEventListener('animationend', () => {
+            palm.remove();
+        });
+    }
 }
 
 document.getElementById('next-btn').addEventListener('click', nextQuestion);
