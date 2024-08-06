@@ -19,90 +19,25 @@ const questions = [
         ],
         correct: 2
     },
-    {
-        question: "Qual setor oferece mais oportunidades de emprego na cidade?",
-        answers: [
-            "Agricultura",
-            "Tecnologia e serviços",
-            "Mineração",
-            "Pesca"
-        ],
-        correct: 1
-    },
-    {
-        question: "Qual atividade econômica é mais comum no campo?",
-        answers: [
-            "Comércio",
-            "Agricultura",
-            "Tecnologia da informação",
-            "Indústria automotiva"
-        ],
-        correct: 1
-    },
-    {
-        question: "Qual das seguintes é uma oportunidade de empreendedorismo no campo?",
-        answers: [
-            "Desenvolvimento de aplicativos",
-            "Cultivo de orgânicos",
-            "Consultoria empresarial",
-            "Desenvolvimento de software"
-        ],
-        correct: 1
-    },
-    {
-        question: "Qual é um desafio comum para empresas nas áreas rurais?",
-        answers: [
-            "Falta de espaço físico",
-            "Alta concorrência",
-            "Acesso limitado à internet de alta velocidade",
-            "Alto custo de aluguel"
-        ],
-        correct: 2
-    },
-    {
-        question: "Qual é uma oportunidade de negócio comum nas cidades?",
-        answers: [
-            "Plantação de grandes culturas",
-            "Agricultura de precisão",
-            "Abrir uma startup de tecnologia",
-            "Pesca em larga escala"
-        ],
-        correct: 2
-    },
-    {
-        question: "Qual é uma vantagem de ter um negócio no campo?",
-        answers: [
-            "Grande mercado consumidor",
-            "Facilidade de transporte e logística",
-            "Menores custos operacionais",
-            "Acesso fácil a matérias-primas importadas"
-        ],
-        correct: 2
-    },
-    {
-        question: "Qual é uma oportunidade de carreira crescente nas cidades?",
-        answers: [
-            "Tecnologia verde",
-            "Agricultura tradicional",
-            "Mineração",
-            "Carpintaria"
-        ],
-        correct: 0
-    },
-    {
-        question: "Qual é um benefício de trabalhar em uma cidade grande?",
-        answers: [
-            "Mais opções de lazer e entretenimento",
-            "Menos poluição sonora",
-            "Menos estresse",
-            "Mais proximidade com a natureza"
-        ],
-        correct: 0
-    }
+    // Adicione mais perguntas aqui
 ];
 
 let currentQuestionIndex = 0;
 let score = 0;
+
+document.addEventListener('DOMContentLoaded', () => {
+    const nextButton = document.getElementById('next-btn');
+    nextButton.addEventListener('click', () => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            showQuestion(questions[currentQuestionIndex]);
+        } else {
+            showResults();
+        }
+    });
+
+    startQuiz();
+});
 
 function startQuiz() {
     currentQuestionIndex = 0;
@@ -113,13 +48,16 @@ function startQuiz() {
 
 function showQuestion(question) {
     const questionElement = document.getElementById('question');
-    const answerButtons = document.querySelectorAll('.btn');
+    const answerButtons = document.getElementById('answer-buttons');
     questionElement.innerText = question.question;
 
-    answerButtons.forEach((button, index) => {
-        button.innerText = question.answers[index];
-        button.classList.remove('correct', 'incorrect');
-        button.disabled = false;
+    answerButtons.innerHTML = '';
+    question.answers.forEach((answer, index) => {
+        const button = document.createElement('button');
+        button.innerText = answer;
+        button.classList.add('btn');
+        button.addEventListener('click', () => selectAnswer(index));
+        answerButtons.appendChild(button);
     });
 
     document.getElementById('next-btn').style.display = 'none';
@@ -128,7 +66,6 @@ function showQuestion(question) {
 function selectAnswer(index) {
     const question = questions[currentQuestionIndex];
     const answerButtons = document.querySelectorAll('.btn');
-
     if (index === question.correct) {
         score++;
         answerButtons[index].classList.add('correct');
@@ -142,27 +79,14 @@ function selectAnswer(index) {
     document.getElementById('score').innerText = `Pontuação: ${score}/${questions.length}`;
 }
 
-function nextQuestion() {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-        showQuestion(questions[currentQuestionIndex]);
-    } else {
-        showResults();
-    }
-}
-
 function showResults() {
     const quizContainer = document.getElementById('quiz-container');
     quizContainer.innerHTML = `
         <h2>Quiz Concluído!</h2>
         <p>Sua pontuação final é ${score} de ${questions.length}</p>
-        <button class="btn" onclick="restartQuiz()">Reiniciar Quiz</button>
+        <button class="btn" onclick="startQuiz()">Reiniciar Quiz</button>
     `;
     triggerConfettiAndPalms();
-}
-
-function restartQuiz() {
-    startQuiz();
 }
 
 function triggerConfettiAndPalms() {
@@ -186,7 +110,3 @@ function triggerConfettiAndPalms() {
         });
     }
 }
-
-document.getElementById('next-btn').addEventListener('click', nextQuestion);
-
-startQuiz();
