@@ -46,14 +46,3 @@ button:hover {
     font-size: 18px;
     text-align: center;
 }
-
-#clapping {
-    display: none;
-    text-align: center;
-    font-size: 24px;
-    margin-top: 20px;
-}
-
-.hidden {
-    display: none;
-}

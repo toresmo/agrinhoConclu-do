@@ -32,8 +32,6 @@ document.getElementById('submit').addEventListener('click', function() {
     result.textContent = `Você acertou ${score} de ${totalQuestions} perguntas.`;
 
     if (score === totalQuestions) {
-        document.getElementById('clapping').classList.remove('hidden');
-    } else {
-        document.getElementById('clapping').classList.add('hidden');
+        window.location.href = 'parabens.html';
     }
 });
