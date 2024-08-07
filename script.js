@@ -1,216 +1,39 @@
-const questions = [
-    {
-        question: "Qual é uma das principais vantagens de viver no campo?",
-        answers: [
-            "Acesso rápido a grandes centros comerciais",
-            "Menor custo de vida",
-            "Maior variedade de empregos",
-            "Melhor conexão de internet"
-        ],
-        correct: 1
-    },
-    {
-        question: "Qual é uma vantagem de viver na cidade?",
-        answers: [
-            "Menos poluição",
-            "Maior proximidade à natureza",
-            "Melhor acesso a serviços de saúde e educação",
-            "Menor trânsito"
-        ],
-        correct: 2
-    },
-    {
-        question: "Qual setor oferece mais oportunidades de emprego na cidade?",
-        answers: [
-            "Agricultura",
-            "Tecnologia e serviços",
-            "Mineração",
-            "Pesca"
-        ],
-        correct: 1
-    },
-    {
-        question: "Qual atividade econômica é mais comum no campo?",
-        answers: [
-            "Comércio",
-            "Agricultura",
-            "Tecnologia da informação",
-            "Indústria automotiva"
-        ],
-        correct: 1
-    },
-    {
-        question: "Qual das seguintes é uma oportunidade de empreendedorismo no campo?",
-        answers: [
-            "Desenvolvimento de aplicativos",
-            "Cultivo de orgânicos",
-            "Consultoria empresarial",
-            "Desenvolvimento de software"
-        ],
-        correct: 1
-    },
-    {
-        question: "Qual é um desafio comum para empresas nas áreas rurais?",
-        answers: [
-            "Falta de espaço físico",
-            "Alta concorrência",
-            "Acesso limitado à internet de alta velocidade",
-            "Alto custo de aluguel"
-        ],
-        correct: 2
-    },
-    {
-        question: "Qual é uma oportunidade de negócio comum nas cidades?",
-        answers: [
-            "Plantação de grandes culturas",
-            "Agricultura de precisão",
-            "Abrir uma startup de tecnologia",
-            "Pesca em larga escala"
-        ],
-        correct: 2
-    },
-    {
-        question: "Qual é uma vantagem de ter um negócio no campo?",
-        answers: [
-            "Grande mercado consumidor",
-            "Facilidade de transporte e logística",
-            "Menores custos operacionais",
-            "Acesso fácil a matérias-primas importadas"
-        ],
-        correct: 2
-    },
-    {
-        question: "Qual é uma oportunidade de carreira crescente nas cidades?",
-        answers: [
-            "Tecnologia verde",
-            "Agricultura tradicional",
-            "Mineração",
-            "Carpintaria"
-        ],
-        correct: 0
-    },
-    {
-        question: "Qual é um benefício de trabalhar em uma cidade grande?",
-        answers: [
-            "Mais opções de lazer e entretenimento",
-            "Menos poluição sonora",
-            "Menos estresse",
-            "Mais proximidade com a natureza"
-        ],
-        correct: 0
-    }
-];
+document.getElementById('submit').addEventListener('click', function() {
+    var score = 0;
+    var totalQuestions = 5;
 
-let currentQuestionIndex = 0;
-let score = 0;
+    var q1 = document.querySelector('input[name="q1"]:checked');
+    var q2 = document.querySelector('input[name="q2"]:checked');
+    var q3 = document.querySelector('input[name="q3"]:checked');
+    var q4 = document.querySelector('input[name="q4"]:checked');
+    var q5 = document.querySelector('input[name="q5"]:checked');
 
-document.addEventListener('DOMContentLoaded', () => {
-    const nextButton = document.getElementById('next-btn');
-    nextButton.addEventListener('click', () => {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) {
-            showQuestion(questions[currentQuestionIndex]);
-        } else {
-            showResults();
-        }
-    });
-
-    startQuiz();
-});
-
-function startQuiz() {
-    currentQuestionIndex = 0;
-    score = 0;
-    document.getElementById('score').innerText = `Pontuação: ${score}/${questions.length}`;
-    showQuestion(questions[currentQuestionIndex]);
-}
-
-function showQuestion(question) {
-    const questionElement = document.getElementById('question');
-    const answerButtons = document.getElementById('answer-buttons');
-    questionElement.innerText = question.question;
-
-    answerButtons.innerHTML = '';
-    question.answers.forEach((answer, index) => {
-        const button = document.createElement('button');
-        button.innerText = answer;
-        button.classList.add('btn');
-        button.addEventListener('click', () => selectAnswer(index));
-        answerButtons.appendChild(button);
-    });
-
-    document.getElementById('next-btn').style.display = 'none';
-}
-
-function selectAnswer(index) {
-    const question = questions[currentQuestionIndex];
-    const answerButtons = document.querySelectorAll('.btn');
-    
-    if (index === question.correct) {
+    if (q1 && q1.value === 'a') {
         score++;
-        answerButtons[index].classList.add('correct');
+    }
+
+    if (q2 && q2.value === 'a') {
+        score++;
+    }
+
+    if (q3 && q3.value === 'c') {
+        score++;
+    }
+
+    if (q4 && q4.value === 'a') {
+        score++;
+    }
+
+    if (q5 && q5.value === 'a') {
+        score++;
+    }
+
+    var result = document.getElementById('result');
+    result.textContent = `Você acertou ${score} de ${totalQuestions} perguntas.`;
+
+    if (score === totalQuestions) {
+        document.getElementById('clapping').classList.remove('hidden');
     } else {
-        answerButtons[index].classList.add('incorrect');
-        answerButtons[question.correct].classList.add('correct');
+        document.getElementById('clapping').classList.add('hidden');
     }
-
-    answerButtons.forEach(button => button.disabled = true);
-    document.getElementById('next-btn').style.display = 'block';
-    document.getElementById('score').innerText = `Pontuação: ${score}/${questions.length}`;
-}
-
-function showResults() {
-    const quizContainer = document.getElementById('quiz-container');
-    quizContainer.innerHTML = `
-        <h2>Quiz Concluído!</h2>
-        <p>Sua pontuação final é ${score} de ${questions.length}</p>
-        <button class="btn" onclick="restartQuiz()">Reiniciar Quiz</button>
-    `;
-    triggerConfettiAndPalms();
-}
-
-function restartQuiz() {
-    document.getElementById('quiz-container').innerHTML = `
-        <div id="question-container">
-            <div id="question">Pergunta</div>
-            <div id="answer-buttons" class="btn-grid"></div>
-        </div>
-        <button id="next-btn" class="btn">Próxima</button>
-        <div id="score">Pontuação: 0/10</div>
-    `;
-    document.addEventListener('DOMContentLoaded', () => {
-        const nextButton = document.getElementById('next-btn');
-        nextButton.addEventListener('click', () => {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                showQuestion(questions[currentQuestionIndex]);
-            } else {
-                showResults();
-            }
-        });
-
-        startQuiz();
-    });
-}
-
-function triggerConfettiAndPalms() {
-    // Trigger confetti
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-    });
-
-    // Trigger palms
-    for (let i = 0; i < 10; i++) {
-        const palm = document.createElement('i');
-        palm.className = 'fas fa-hands-clapping palma';
-        palm.style.left = Math.random() * 100 + 'vw';
-        palm.style.animationDelay = Math.random() * 2 + 's';
-        document.body.appendChild(palm);
-
-        palm.addEventListener('animationend', () => {
-            palm.remove();
-        });
-    }
-}
+});

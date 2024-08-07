@@ -1,24 +1,67 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Oportunidades no Campo e na Cidade</title>
     <link rel="stylesheet" href="jogotabuleiro.css">
-    <title>Jogo do Quiz</title>
-    <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script defer src="script.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Jogo do Quiz: Do Campo à Cidade</h1>
-    </header>
-    <main id="quiz-container">
-        <div id="question-container">
-            <div id="question">Pergunta</div>
-            <div id="answer-buttons" class="btn-grid"></div>
+    <div class="container">
+        <h1>Quiz: Oportunidades no Campo e na Cidade</h1>
+        <div id="quiz">
+            <div class="question">
+                <h2>Pergunta 1</h2>
+                <p>Quais são as principais oportunidades de trabalho no campo?</p>
+                <ul class="no-bullets">
+                    <li><input type="radio" name="q1" value="a"> Agricultura e Pecuária</li>
+                    <li><input type="radio" name="q1" value="b"> Tecnologia da Informação</li>
+                    <li><input type="radio" name="q1" value="c"> Comércio Internacional</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h2>Pergunta 2</h2>
+                <p>Como os alimentos produzidos no campo chegam às cidades?</p>
+                <ul class="no-bullets">
+                    <li><input type="radio" name="q2" value="a"> Através de transporte rodoviário e ferroviário</li>
+                    <li><input type="radio" name="q2" value="b"> Via correio</li>
+                    <li><input type="radio" name="q2" value="c"> Por entregas de drones</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h2>Pergunta 3</h2>
+                <p>Quais são os desafios comuns enfrentados pelos agricultores na venda de seus produtos?</p>
+                <ul class="no-bullets">
+                    <li><input type="radio" name="q3" value="a"> Clima e condições meteorológicas</li>
+                    <li><input type="radio" name="q3" value="b"> Competição com produtos importados</li>
+                    <li><input type="radio" name="q3" value="c"> Todos os itens acima</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h2>Pergunta 4</h2>
+                <p>Qual é uma oportunidade de negócio emergente nas áreas urbanas?</p>
+                <ul class="no-bullets">
+                    <li><input type="radio" name="q4" value="a"> Agricultura urbana</li>
+                    <li><input type="radio" name="q4" value="b"> Mineração de carvão</li>
+                    <li><input type="radio" name="q4" value="c"> Produção de automóveis</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h2>Pergunta 5</h2>
+                <p>Qual é o papel dos mercados locais na distribuição de alimentos?</p>
+                <ul class="no-bullets">
+                    <li><input type="radio" name="q5" value="a"> Facilitar o acesso direto dos consumidores aos produtores</li>
+                    <li><input type="radio" name="q5" value="b"> Armazenar produtos para exportação</li>
+                    <li><input type="radio" name="q5" value="c"> Regular os preços dos alimentos globalmente</li>
+                </ul>
+            </div>
+            <button id="submit">Enviar Respostas</button>
+            <div id="result"></div>
         </div>
-        <button id="next-btn" class="btn">Próxima</button>
-        <div id="score">Pontuação: 0/10</div>
-    </main>
+    </div>
+    <div id="clapping" class="clapping hidden">
+        👏👏👏 Parabéns! 👏👏👏
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
