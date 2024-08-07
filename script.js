@@ -32,6 +32,7 @@ document.getElementById('submit').addEventListener('click', function() {
     result.textContent = `Você acertou ${score} de ${totalQuestions} perguntas.`;
 
     if (score === totalQuestions) {
-        window.location.href = 'parabens.html';
+        document.getElementById('quiz').classList.add('hidden');
+        document.getElementById('congrats-message').classList.remove('hidden');
     }
 });
